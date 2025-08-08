@@ -1,6 +1,6 @@
-# cmp-nvim-r
+# cmp-vim-r
 
-Completion source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) using [Nvim-R](https://github.com/jalvesaq/Nvim-R) as backend.
+Completion source for [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) using [Vim-R](https://github.com/jalvesaq/Vim-R) as backend.
 
 ## Installation
 
@@ -14,16 +14,16 @@ Register the source for `nvim-cmp`:
 ```lua
 require'cmp'.setup {
   sources = {
-    { name = 'cmp_nvim_r' },
+    { name = 'cmp_vim_r' },
   }
 }
 ```
 
 ## Configuration
 
-### cmp-nvim-r
+### cmp-vim-r
 
-`cmp-nvim-r` has the following options:
+`cmp-vim-r` has the following options:
 
   - `filetypes`: The list of file types for which the source should be enabled.
     Default: `{'r', 'rmd', 'quarto', 'rnoweb', 'rhelp'}`
@@ -52,12 +52,12 @@ require'cmp'.setup {
   - `quarto_intel`: Path to `yaml-intelligence-resources.json` which is part
     of `quarto` application and has all necessary information for completion
     of valid YAML options in an Quarto document.  This option is overridden by
-    `g:R_quarto_intel`. Default: `nil` (`cmp-nvim-r` will try to find the file).
+    `g:R_quarto_intel`. Default: `nil` (`cmp-vim-r` will try to find the file).
 
 Below is an example of how to set theses options:
 
 ```lua
-require("cmp_nvim_r").setup({
+require("cmp_vim_r").setup({
   filetypes = {"r", "rmd", "quarto"},
   doc_width = 58
   quarto_intel = "~/Downloads/quarto-1.1.251/share/editor/tools/yaml/yaml-intelligence-resources.json"
@@ -66,11 +66,11 @@ require("cmp_nvim_r").setup({
 
 ### nvim-cmp
 
-The source `cmp_nvim_r` does not require any special configuration of
+The source `cmp_vim_r` does not require any special configuration of
 `nvim-cmp` to work, and people have different preferences and workflows.
 Anyway, I share below what worked best for me:
 
-  - `cmp-nvim-r` sets the field `sortText` of completed items as "0" for
+  - `cmp-vim-r` sets the field `sortText` of completed items as "0" for
     function arguments and "9" for everything else. This means that function
     arguments will always be at the top of the list of suggestions if you put
     `cmp.config.compare.sort_text` at the top of list of compare `nvim-cmp`
@@ -100,7 +100,7 @@ cmp.setup({
                     vsnip = '',
                     path = '',
                     cmp_zotcite = 'z',
-                    cmp_nvim_r = 'R'
+                    cmp_vim_r = 'R'
                 }
                 item.menu = menu_icon[entry.source.name]
                 return item
@@ -110,7 +110,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'vsnip' },
         { name = 'cmp_zotcite' },
-        { name = 'cmp_nvim_r' },
+        { name = 'cmp_vim_r' },
         { name = 'nvim_lsp' },
         { name = 'path', option = { trailing_slash = true } },
     }),
@@ -118,7 +118,7 @@ cmp.setup({
 ```
 ### languageserver
 
-Since `cmp-nvim-r` and the R package `languageserver` provide completions for
+Since `cmp-vim-r` and the R package `languageserver` provide completions for
 the same code, and completions from the `languageserver` might be the first
 ones to be displayed by `nvim-cmp`, you may want to put this in your `~/.Rprofile`:
 

@@ -38,7 +38,7 @@ local options = {
 
 local reset_r_compl = function ()
     for _, v in pairs(cmp.core.sources) do
-        if v.name == "cmp_nvim_r" then
+        if v.name == "cmp_vim_r" then
             v:reset()
             break
         end
@@ -231,7 +231,7 @@ source.get_trigger_characters = function()
 end
 
 source.get_debug_name = function()
-    return 'cmp_nvim_r'
+    return 'cmp_vim_r'
 end
 
 source.is_available = function()
@@ -244,7 +244,7 @@ source.is_available = function()
 end
 
 local fix_doc = function(txt)
-    -- The nvimrserver replaces ' with \x13 and \n with \x14.
+    -- The vimrserver replaces ' with \x13 and \n with \x14.
     -- We have to revert this:
     txt = string.gsub(txt , "\x14", "\n")
     txt = string.gsub(txt , "\x13", "'")
@@ -666,7 +666,7 @@ source.complete = function(_, request, callback)
         return nil
     end
 
-    -- required by nvimrserver
+    -- required by vimrserver
     compl_id = compl_id + 1
 
     local wrd = string.sub(request.context.cursor_before_line, request.offset)
@@ -723,7 +723,7 @@ source.complete = function(_, request, callback)
             end
             msg = msg .. ')'
 
-            -- Save documentation of arguments to be used by nvimrserver
+            -- Save documentation of arguments to be used by vimrserver
             vim.fn.SendToNvimcom("E", msg)
             return nil
         end
